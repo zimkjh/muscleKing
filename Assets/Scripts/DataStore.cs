@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+public class DataStore : MonoBehaviour
 {
-    private int muscleCount = 0;
+    private int health = 0;
 
     void Awake()
     {
-        muscleCount = PlayerPrefs.GetInt("muscleCount");
+        health = PlayerPrefs.GetInt("health");
     }
 
-    public void incMuscleCount(int incNum)
+    public void incHealthCount(int incNum)
     {
-        muscleCount += incNum;
-        setMuscleCount(muscleCount);
-
+        health += incNum;
+        setHealthCount(health);
     }
 
-    public void setMuscleCount(int muscleCount)
+    public void setHealthCount(int health)
     {
-        PlayerPrefs.SetInt("muscleCount", muscleCount);
+        PlayerPrefs.SetInt("health", health);
     }
-    public int getMuscleCount()
+    public int getHealthCount()
     {
-        return muscleCount;
+        return health;
     }
 }
