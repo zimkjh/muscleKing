@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ClickZone : MonoBehaviour
 {
-    public DataStore dataStore;
+    public DataController dataController;
 
     public void OnClick()
     {
-        dataStore.incHealthCount(1);
+        dataController.incHealth(1);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataStore : MonoBehaviour
+public class DataController : MonoBehaviour
 {
     private int health = 0;
 
@@ -11,17 +11,17 @@ public class DataStore : MonoBehaviour
         health = PlayerPrefs.GetInt("health");
     }
 
-    public void incHealthCount(int incNum)
+    public void incHealth(int incNum)
     {
         health += incNum;
-        setHealthCount(health);
+        setHealth(health);
     }
 
-    public void setHealthCount(int health)
+    public void setHealth(int health)
     {
         PlayerPrefs.SetInt("health", health);
     }
-    public int getHealthCount()
+    public int getHealth()
     {
         return health;
     }
