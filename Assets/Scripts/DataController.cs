@@ -5,24 +5,44 @@ using UnityEngine;
 public class DataController : MonoBehaviour
 {
     private int health = 0;
-
+    private int healthPerTouch = 1;
+    private int healthPerSecond = 1;
+    Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
     {
-        health = PlayerPrefs.GetInt("health");
+        List<string> healthNameList = new List<string>();
+        healthNameList.Add("health");
+        healthNameList.Add("healthPerTouch");
+        healthNameList.Add("healthPerSecond");
+        foreach (string name in healthNameList)
+        {
+            if (PlayerPrefs.HasKey(name))
+            {
+                healthDict[name] = PlayerPrefs.GetInt(name);
+            }
+            else
+            {
+                healthDict[name] = 1;
+            }
+        }
     }
 
-    public void incHealth(int incNum)
+    public void incHealth(string healthName, int incNum)
     {
-        health += incNum;
-        setHealth(health);
+        healthDict[healthName] += incNum;
+        setHealth(healthName, healthDict[healthName]);
     }
-
-    public void setHealth(int health)
+    public void setHealth(string healthName, int health)
     {
-        PlayerPrefs.SetInt("health", health);
+        PlayerPrefs.SetInt(healthName, health);
     }
-    public int getHealth()
+    public void decHealth(string healthName, int decNum)
     {
-        return health;
+        healthDict[healthName] -= decNum;
+        setHealth(healthName, healthDict[healthName]);
+    }
+    public int getHealth(string healthName)
+    {
+        return healthDict[healthName];
     }
 }

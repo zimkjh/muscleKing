@@ -9,7 +9,7 @@ public class ClickImage : MonoBehaviour, IPointerClickHandler
     public MainImage mainImage;
     public void OnPointerClick(PointerEventData eventData)
     {
-        dataController.incHealth(1);
+        dataController.incHealth("health", 1);
         mainImage.doTrigger();
     }
 }
