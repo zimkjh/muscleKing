@@ -8,6 +8,6 @@ public class TextDisplayer : MonoBehaviour
     public DataController dataController;
     private void Update()
     {
-        health.text = "현재 체력 : " + dataController.getHealth().ToString();
+        health.text = "현재 체력 : " + dataController.getHealth("health").ToString();
     }
 }
