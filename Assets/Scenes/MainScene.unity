@@ -732,7 +732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\uC774\uBBF8\uC9C0\uB97C \uB123\uC744\uAE4C \uC5EC\uAE30\uC5D0"
 --- !u!222 &41726173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1608,6 +1608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1418116695}
+  healthPerTouch: {fileID: 473886994}
+  healthPerSecond: {fileID: 1709028241}
   dataController: {fileID: 535551939}
 --- !u!1 &117810899
 GameObject:
@@ -3821,7 +3823,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 265932954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1840770982}
+        m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
+        m_MethodName: eB1OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &265932954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17026,7 +17040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mT1: {fileID: 1854851418}
   sT1: {fileID: 41726172}
-  eB1: {fileID: 0}
+  dataController: {fileID: 535551939}
 --- !u!1 &1847436006
 GameObject:
   m_ObjectHideFlags: 0
@@ -17175,7 +17189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\uD314\uAD7D"
 --- !u!222 &1854851419
 CanvasRenderer:
   m_ObjectHideFlags: 0
