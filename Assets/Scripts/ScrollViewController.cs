@@ -49,7 +49,6 @@ public class ScrollViewController : MonoBehaviour
     }
     public void boosterButtonOnclick()
     {
-
         scrollViewUnvisiable();
         boosterScrollView.SetActive(true);
     }

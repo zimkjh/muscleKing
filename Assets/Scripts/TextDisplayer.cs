@@ -13,6 +13,5 @@ public class TextDisplayer : MonoBehaviour
         health.text = "현재 체력 : " + dataController.getHealth("health").ToString();
         healthPerTouch.text = dataController.getHealth("healthPerTouch").ToString() + " / 터치";
         healthPerSecond.text = dataController.getHealth("healthPerSecond").ToString() + " / 초";
-
     }
 }
