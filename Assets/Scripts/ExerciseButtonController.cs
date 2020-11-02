@@ -25,6 +25,4 @@ public class ExerciseButtonController : MonoBehaviour
             dataController.incHealth("healthPerTouch", effectExercise1);
         }
     }
-
-
 }

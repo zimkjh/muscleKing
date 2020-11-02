@@ -34,7 +34,6 @@ public class DataController : MonoBehaviour
             incHealth("health", healthDict["healthPerSecond"]);
             yield return new WaitForSeconds(1f);
         }
-
     }
     public void incHealth(string healthName, int incNum)
     {
