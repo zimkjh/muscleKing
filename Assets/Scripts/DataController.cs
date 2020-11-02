@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class DataController : MonoBehaviour
 {
     private int health = 0;
@@ -25,8 +25,17 @@ public class DataController : MonoBehaviour
                 healthDict[name] = 1;
             }
         }
+        StartCoroutine(healthUpPerSecond());
     }
+    IEnumerator healthUpPerSecond()
+    {
+        while (true)
+        {
+            incHealth("health", healthDict["healthPerSecond"]);
+            yield return new WaitForSeconds(1f);
+        }
 
+    }
     public void incHealth(string healthName, int incNum)
     {
         healthDict[healthName] += incNum;
