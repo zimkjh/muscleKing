@@ -14,7 +14,7 @@ public class DataController : MonoBehaviour
         healthNameList.Add("health");
         healthNameList.Add("healthPerTouch");
         healthNameList.Add("healthPerSecond");
-        foreach (sting name in healthNameList)
+        foreach (string name in healthNameList)
         {
             if (PlayerPrefs.HasKey(name))
             {
