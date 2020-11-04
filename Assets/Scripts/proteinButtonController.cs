@@ -14,17 +14,17 @@ public class proteinButtonController : MonoBehaviour
     public Text mT4, pT4, rT4;
     public Text mT5, pT5, rT5;
     string[] nameOfProtein = new string[] { "계란", "두유", "닭가슴살", "WPC보충제", "WPIH보충제" };
-    double[] priceOfProtein = new double[] { 20, 200, 10000, 40000, 300000 };
-    double[] effectOfProtein = new double[] { 5, 25, 150, 750, 2500 };
-    double[] effectRateOfProtein = new double[] { 5, 25, 50, 100, 250 };
-    double[] priceRateOfProtein = new double[] { 1.2, 1.4, 1.6, 1.8, 2 };
+    float[] priceOfProtein = new float[] { 20, 200, 10000, 40000, 300000 };
+    float[] effectOfProtein = new float[] { 5, 25, 150, 750, 2500 };
+    float[] effectRateOfProtein = new float[] { 5, 25, 50, 100, 250 };
+    float[] priceRateOfProtein = new float[] { 1.2f, 1.4f, 1.6f, 1.8f, 2 };
     public DataController dataController;
-    Dictionary<string, double> proteinItem1 = new Dictionary<string, double>();
-    Dictionary<string, double> proteinItem2 = new Dictionary<string, double>();
-    Dictionary<string, double> proteinItem3 = new Dictionary<string, double>();
-    Dictionary<string, double> proteinItem4 = new Dictionary<string, double>();
-    Dictionary<string, double> proteinItem5 = new Dictionary<string, double>();
-    Dictionary<string, Dictionary<string, double>> proteinItemList = new Dictionary<string, Dictionary<string, double>>();
+    Dictionary<string, float> proteinItem1 = new Dictionary<string, float>();
+    Dictionary<string, float> proteinItem2 = new Dictionary<string, float>();
+    Dictionary<string, float> proteinItem3 = new Dictionary<string, float>();
+    Dictionary<string, float> proteinItem4 = new Dictionary<string, float>();
+    Dictionary<string, float> proteinItem5 = new Dictionary<string, float>();
+    Dictionary<string, Dictionary<string, float>> proteinItemList = new Dictionary<string, Dictionary<string, float>>();
 
     void Start()
     {

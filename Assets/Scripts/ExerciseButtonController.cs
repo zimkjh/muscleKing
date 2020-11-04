@@ -14,17 +14,17 @@ public class ExerciseButtonController : MonoBehaviour
     public Text mT4, pT4, rT4;
     public Text mT5, pT5, rT5;
     string[] nameOfExercise = new string[] { "팔굽혀펴기", "윗몸일으키기", "턱걸이", "벤치프레스", "데드리프트" };
-    double[] priceOfExercise = new double[] { 10, 100, 5000, 20000, 150000 };
-    double[] effectOfExercise = new double[] { 1, 5, 30, 150, 500 };
-    double[] effectRateOfExercise = new double[] { 1, 5, 10, 20, 50 };
-    double[] priceRateOfExercise = new double[] { 1.2, 1.4, 1.6, 1.8, 2 };
+    float[] priceOfExercise = new float[] { 10f, 100f, 5000f, 20000f, 150000f };
+    float[] effectOfExercise = new float[] { 1f, 5f, 30f, 150f, 500f };
+    float[] effectRateOfExercise = new float[] { 1f, 5f, 10f, 20f, 50f };
+    float[] priceRateOfExercise = new float[] { 1.2f, 1.4f, 1.6f, 1.8f, 2f };
     public DataController dataController;
-    Dictionary<string, double> exerciseItem1 = new Dictionary<string, double>();
-    Dictionary<string, double> exerciseItem2 = new Dictionary<string, double>();
-    Dictionary<string, double> exerciseItem3 = new Dictionary<string, double>();
-    Dictionary<string, double> exerciseItem4 = new Dictionary<string, double>();
-    Dictionary<string, double> exerciseItem5 = new Dictionary<string, double>();
-    Dictionary<string, Dictionary<string, double>> exerciseItemList = new Dictionary<string, Dictionary<string, double>>();
+    Dictionary<string, float> exerciseItem1 = new Dictionary<string, float>();
+    Dictionary<string, float> exerciseItem2 = new Dictionary<string, float>();
+    Dictionary<string, float> exerciseItem3 = new Dictionary<string, float>();
+    Dictionary<string, float> exerciseItem4 = new Dictionary<string, float>();
+    Dictionary<string, float> exerciseItem5 = new Dictionary<string, float>();
+    Dictionary<string, Dictionary<string, float>> exerciseItemList = new Dictionary<string, Dictionary<string, float>>();
 
     void Start()
     {
@@ -98,7 +98,6 @@ public class ExerciseButtonController : MonoBehaviour
     {
         buyProcess("데드리프트");
     }
-
 
     void buyProcess(string name)
     {
