@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 public class DataController : MonoBehaviour
 {
+    static float healthMulRate;
     Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
     {
+        healthMulRate = 1;
+        if (PlayerPrefs.HasKey("healthMulRate"))
+        {
+            healthMulRate = PlayerPrefs.GetFloat("healthMulRate");
+        }
         List<string> healthNameList = new List<string>();
         healthNameList.Add("health");
         healthNameList.Add("healthPerTouch");
@@ -28,7 +35,7 @@ public class DataController : MonoBehaviour
     {
         while (true)
         {
-            incHealth("health", healthDict["healthPerSecond"]);
+            incHealth("health", Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
             yield return new WaitForSeconds(1f);
         }
     }
@@ -49,5 +56,14 @@ public class DataController : MonoBehaviour
     public int getHealth(string healthName)
     {
         return healthDict[healthName];
+    }
+    public void mulHealth(float mulNum)
+    {
+        healthMulRate = healthMulRate * mulNum;
+        PlayerPrefs.SetFloat("healthMulRate", healthMulRate);
+    }
+    public float getMulHealth()
+    {
+        return healthMulRate;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 public class TextDisplayer : MonoBehaviour
 {
     public Text health;
@@ -11,7 +12,7 @@ public class TextDisplayer : MonoBehaviour
     private void Update()
     {
         health.text = "현재 체력 : " + dataController.getHealth("health").ToString();
-        healthPerTouch.text = dataController.getHealth("healthPerTouch").ToString() + " / 터치";
-        healthPerSecond.text = dataController.getHealth("healthPerSecond").ToString() + " / 초";
+        healthPerTouch.text = Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth()).ToString() + " / 터치";
+        healthPerSecond.text = Convert.ToInt32(dataController.getHealth("healthPerSecond") * dataController.getMulHealth()).ToString() + " / 초";
     }
 }

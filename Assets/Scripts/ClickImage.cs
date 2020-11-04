@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using System;
 public class ClickImage : MonoBehaviour, IPointerClickHandler
 {
     public DataController dataController;
     public MainImage mainImage;
     public void OnPointerClick(PointerEventData eventData)
     {
-        dataController.incHealth("health", dataController.getHealth("healthPerTouch"));
+        dataController.incHealth("health", Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth()));
         mainImage.doTrigger();
     }
 }
