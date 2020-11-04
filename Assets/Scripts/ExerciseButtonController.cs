@@ -8,11 +8,11 @@ using System;
 public class ExerciseButtonController : MonoBehaviour
 {
     //public Text mT1, mT2, mT3, mT4, mT5, sT1, sT2, sT3, sT4, sT5;
-    public Text mT1, sT1, pT1, rT1;
-    public Text mT2, sT2, pT2, rT2;
-    public Text mT3, sT3, pT3, rT3;
-    public Text mT4, sT4, pT4, rT4;
-    public Text mT5, sT5, pT5, rT5;
+    public Text mT1, pT1, rT1;
+    public Text mT2, pT2, rT2;
+    public Text mT3, pT3, rT3;
+    public Text mT4, pT4, rT4;
+    public Text mT5, pT5, rT5;
 
     public DataController dataController;
     Dictionary<string, double> exerciseItem1 = new Dictionary<string, double>();
@@ -24,7 +24,6 @@ public class ExerciseButtonController : MonoBehaviour
     void Start()
     {
         mT1.text = "팔굽혀펴기";
-        sT1.text = "운동의 기초";
         exerciseItem1["가격"] = 10;
         exerciseItem1["효과"] = 1;
         exerciseItem1["레벨"] = 0;
@@ -32,7 +31,6 @@ public class ExerciseButtonController : MonoBehaviour
         exerciseItem1["가격증가량"] = 1.2;
 
         mT2.text = "윗몸일으키기";
-        sT2.text = "식스팩을 만들자";
         exerciseItem2["가격"] = 100;
         exerciseItem2["효과"] = 5;
         exerciseItem2["레벨"] = 0;
@@ -40,7 +38,6 @@ public class ExerciseButtonController : MonoBehaviour
         exerciseItem2["가격증가량"] = 1.4;
 
         mT3.text = "턱걸이";
-        sT3.text = "맨몸운동의 끝판왕";
         exerciseItem3["가격"] = 5000;
         exerciseItem3["효과"] = 30;
         exerciseItem3["레벨"] = 0;
@@ -48,7 +45,6 @@ public class ExerciseButtonController : MonoBehaviour
         exerciseItem3["가격증가량"] = 1.6;
 
         mT4.text = "벤치프레스";
-        sT4.text = "탄탄한 가슴";
         exerciseItem4["가격"] = 20000;
         exerciseItem4["효과"] = 150;
         exerciseItem4["레벨"] = 0;
@@ -56,7 +52,6 @@ public class ExerciseButtonController : MonoBehaviour
         exerciseItem4["가격증가량"] = 1.8;
 
         mT5.text = "데드리프트";
-        sT5.text = "탄탄한 가슴";
         exerciseItem5["가격"] = 150000;
         exerciseItem5["효과"] = 500;
         exerciseItem5["레벨"] = 0;
