@@ -7,7 +7,6 @@ using System;
 
 public class ExerciseButtonController : MonoBehaviour
 {
-    //public Text mT1, mT2, mT3, mT4, mT5, sT1, sT2, sT3, sT4, sT5;
     public Text mT1, pT1, rT1;
     public Text mT2, pT2, rT2;
     public Text mT3, pT3, rT3;
