@@ -120,13 +120,4 @@ public class ExerciseButtonController : MonoBehaviour
             PlayerPrefs.SetInt(saveEffect, Convert.ToInt32(exerciseItemList[name]["효과"]));
         }
     }
-
 }
-
-
-//PlayerPrefs.SetInt(이름, 저장할 인트값);
-//저장을 언제 해야 하는가 -> 물건을 살 때 그치 살때가 최신이니까 살때만 저장하면됨.
-//저장은 살때 불러오는건 킬때
-//저장할때 이름+레벨, 이름+가격, 이름+효과.. 이렇게 해야할듯
-//그럼 팔굽혀펴기레벨, 팔굽혀펴기가격, 팔굽혀펴기효과 이런식..
-//가격 효과 레벨 3가지 저장하면 됨.

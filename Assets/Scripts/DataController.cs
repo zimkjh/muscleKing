@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DataController : MonoBehaviour
 {
-    private int health = 0;
-    private int healthPerTouch = 1;
-    private int healthPerSecond = 1;
     Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
     {
