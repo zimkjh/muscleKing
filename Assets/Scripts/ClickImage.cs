@@ -11,6 +11,7 @@ public class ClickImage : MonoBehaviour, IPointerClickHandler
     {
         dataController.incHealth("health", Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth()));
         dataController.incAllHealth(Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth()));
+        dataController.saveInfo();
         mainImage.doTrigger();
     }
 }
