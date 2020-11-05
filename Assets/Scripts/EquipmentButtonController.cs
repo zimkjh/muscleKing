@@ -13,96 +13,93 @@ public class EquipmentButtonController : MonoBehaviour
     public Text mT3, pT3, rT3;
     public Text mT4, pT4, rT4;
     public Text mT5, pT5, rT5;
-    string[] nameOfGym = new string[] { "헬스장_1", "헬스장_2", "헬스장_3", "헬스장_4", "헬스장_5" };
-    float[] priceOfGym = new float[] { 1000000, 10000000, 50000000, 200000000, 1000000000 }; //1백만, 1천만, 5천만, 2억, 10억
-    float[] effectOfGym = new float[] { 1.1f, 1.2f, 1.3f, 1.4f, 1.5f };
+    string[] nameOfEquip = new string[] { "장비_1", "장비_2", "장비_3", "장비_4", "장비_5" };
+    float[] restrictOfEquip = new float[] { 200, 300, 400, 450, 500 };
     public DataController dataController;
-    Dictionary<string, float> gymItem1 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem2 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem3 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem4 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem5 = new Dictionary<string, float>();
-    Dictionary<string, Dictionary<string, float>> gymItemList = new Dictionary<string, Dictionary<string, float>>();
+    Dictionary<string, float> equipItem1 = new Dictionary<string, float>();
+    Dictionary<string, float> equipItem2 = new Dictionary<string, float>();
+    Dictionary<string, float> equipItem3 = new Dictionary<string, float>();
+    Dictionary<string, float> equipItem4 = new Dictionary<string, float>();
+    Dictionary<string, float> equipItem5 = new Dictionary<string, float>();
+    Dictionary<string, Dictionary<string, float>> equipItemList = new Dictionary<string, Dictionary<string, float>>();
 
     void Start()
     {
-        gymItemList["헬스장_1"] = gymItem1;
-        gymItemList["헬스장_2"] = gymItem2;
-        gymItemList["헬스장_3"] = gymItem3;
-        gymItemList["헬스장_4"] = gymItem4;
-        gymItemList["헬스장_5"] = gymItem5;
+        equipItemList["장비_1"] = equipItem1;
+        equipItemList["장비_2"] = equipItem2;
+        equipItemList["장비_3"] = equipItem3;
+        equipItemList["장비_4"] = equipItem4;
+        equipItemList["장비_5"] = equipItem5;
         int index = 0;
-        foreach (string name in nameOfGym)
+        foreach (string name in nameOfEquip)
         {
             if (PlayerPrefs.HasKey(name + "가격")) //샀다는 뜻
             {
-                gymItemList[name]["가격"] = PlayerPrefs.GetInt(name + "가격");
-                gymItemList[name]["효과"] = PlayerPrefs.GetFloat(name + "효과");
-                gymItemList[name]["레벨"] = PlayerPrefs.GetInt(name + "레벨");
+                equipItemList[name]["가격"] = PlayerPrefs.GetFloat(name + "가격");
+                equipItemList[name]["레벨"] = PlayerPrefs.GetInt(name + "레벨");
             }
             else //안샀음
             {
-                gymItemList[name]["가격"] = priceOfGym[index];
-                gymItemList[name]["효과"] = effectOfGym[index];
-                gymItemList[name]["레벨"] = 0;
+                equipItemList[name]["가격"] = restrictOfEquip[index];
+                equipItemList[name]["레벨"] = 0;
             }
             index += 1;
         }
-        if (gymItem1["레벨"] == 1)
+        if (equipItem1["레벨"] == 1)
         {
-            mT1.text = "야외 헬스장\n구매 완료";
+            mT1.text = "물병\n구매 완료";
         }
         else
         {
-            mT1.text = "야외 헬스장\n구매 가능";
+            mT1.text = "물병\n3대 200 이상 구매 가능";
         }
-        if (gymItem2["레벨"] == 1)
+        if (equipItem2["레벨"] == 1)
         {
-            mT2.text = "동네 헬스장\n구매 완료";
+            mT2.text = "손목 스트랩\n구매 완료";
         }
         else
         {
-            mT2.text = "동네 헬스장\n구매 가능";
+            mT2.text = "손목 스트랩\n3대 300 이상 구매 가능";
         }
-        if (gymItem3["레벨"] == 1)
+        if (equipItem3["레벨"] == 1)
         {
-            mT3.text = "시내 헬스장\n구매 완료";
+            mT3.text = "헬스 장갑\n구매 완료";
         }
         else
         {
-            mT3.text = "시내 헬스장\n구매 가능";
+            mT3.text = "헬스 장갑\n3대 400 이상 구매 가능";
         }
-        if (gymItem4["레벨"] == 1)
+        if (equipItem4["레벨"] == 1)
         {
-            mT4.text = "단체 PT\n구매 완료";
+            mT4.text = "헬스 벨트\n구매 완료";
         }
         else
         {
-            mT4.text = "단체 PT\n구매 가능";
+            mT4.text = "헬스 벨트\n3대 450 이상 구매 가능";
         }
-        if (gymItem5["레벨"] == 1)
+        if (equipItem5["레벨"] == 1)
         {
-            mT5.text = "개인 PT\n구매 완료";
+            mT5.text = "언더아머\n구매 완료";
         }
         else
         {
-            mT5.text = "개인 PT\n구매 가능";
+            mT5.text = "언더아머\n3대 500 이상 구매 가능";
         }
 
-        pT1.text = gymItem1["가격"].ToString();
-        rT1.text = "+" + ((gymItem1["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem1["효과"] - 1) * 100).ToString() + "% 체력 / 초";
+        // pT1.text = equipItem1["가격"].ToString();
+        // rT1.text = "+" + ((equipItem1["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem1["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
-        pT2.text = gymItem2["가격"].ToString();
-        rT2.text = "+" + ((gymItem2["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem2["효과"] - 1) * 100).ToString() + "% 체력 / 초";
+        // pT2.text = equipItem2["가격"].ToString();
+        // rT2.text = "+" + ((equipItem2["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem2["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
-        pT3.text = gymItem3["가격"].ToString();
-        rT3.text = "+" + ((gymItem3["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem3["효과"] - 1) * 100).ToString() + "% 체력 / 초";
+        // pT3.text = equipItem3["가격"].ToString();
+        // rT3.text = "+" + ((equipItem3["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem3["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
-        pT4.text = gymItem4["가격"].ToString();
-        rT4.text = "+" + ((gymItem4["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem4["효과"] - 1) * 100).ToString() + "% 체력 / 초";
+        // pT4.text = equipItem4["가격"].ToString();
+        // rT4.text = "+" + ((equipItem4["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem4["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
-        pT5.text = gymItem5["가격"].ToString();
-        rT5.text = "+" + ((gymItem5["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem5["효과"] - 1) * 100).ToString() + "% 체력 / 초";
+        // pT5.text = equipItem5["가격"].ToString();
+        // rT5.text = "+" + ((equipItem5["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem5["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
     }
     void Update()
@@ -110,64 +107,57 @@ public class EquipmentButtonController : MonoBehaviour
 
 
     }
-    public void gB1OnClick()
+    public void eqB1OnClick()
     {
-        if (gymItem1["레벨"] < 1)
+        if (equipItem1["레벨"] < 1)
         {
-            buyProcess("헬스장_1");
-            mT1.text = "야외 헬스장\n구매 완료";
+            buyProcess("장비_1");
+            mT1.text = "물병\n구매 완료";
         }
     }
-    public void gB2OnClick()
+    public void eqB2OnClick()
     {
-        if (gymItem2["레벨"] < 1)
+        if (equipItem2["레벨"] < 1)
         {
-            buyProcess("헬스장_2");
-            mT2.text = "동네 헬스장\n구매 완료";
+            buyProcess("장비_2");
+            mT2.text = "손목 스트랩\n구매 완료";
         }
     }
-    public void gB3OnClick()
+    public void eqB3OnClick()
     {
-        if (gymItem3["레벨"] < 1)
+        if (equipItem3["레벨"] < 1)
         {
-            buyProcess("헬스장_3");
-            mT3.text = "시내 헬스장\n구매 완료";
+            buyProcess("장비_3");
+            mT3.text = "헬스 장갑\n구매 완료";
         }
     }
-    public void gB4OnClick()
+    public void eqB4OnClick()
     {
-        if (gymItem4["레벨"] < 1)
+        if (equipItem4["레벨"] < 1)
         {
-            buyProcess("헬스장_4");
-            mT4.text = "단체 PT\n구매 완료";
+            buyProcess("장비_4");
+            mT4.text = "헬스 벨트\n구매 완료";
         }
     }
-    public void gB5OnClick()
+    public void eqB5OnClick()
     {
-        if (gymItem5["레벨"] < 1)
+        if (equipItem5["레벨"] < 1)
         {
-            buyProcess("헬스장_5");
-            mT5.text = "개인 PT\n구매 완료";
+            buyProcess("장비_5");
+            mT5.text = "언더아머\n구매 완료";
 
         }
     }
 
     void buyProcess(string name)
     {
-        if (dataController.getHealth("health") > gymItemList[name]["가격"])
+        if (dataController.getAllHealth() > equipItemList[name]["가격"])
         {
-            dataController.decHealth("health", Convert.ToInt32(gymItemList[name]["가격"]));
-            dataController.mulHealth(gymItemList[name]["효과"]);
-
-            gymItemList[name]["레벨"] += 1;
+            equipItemList[name]["레벨"] += 1;
 
             string saveLevel = name + "레벨";
-            string savePrice = name + "가격";
-            string saveEffect = name + "효과";
 
-            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(gymItemList[name]["레벨"]));
-            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(gymItemList[name]["가격"]));
-            PlayerPrefs.SetFloat(saveEffect, gymItemList[name]["효과"]);
+            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(equipItemList[name]["레벨"]));
         }
     }
 }

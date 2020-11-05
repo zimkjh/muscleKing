@@ -5,10 +5,28 @@ using System;
 using UnityEngine.UI;
 public class DataController : MonoBehaviour
 {
+    private int allHealth;
+    private float muscleVal;
+    private float threeWeight;
+    private float weight;
     static float healthMulRate;
     Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
     {
+        muscleVal = 20;
+        threeWeight = 100;
+        weight = 40;
+        if (PlayerPrefs.HasKey("muscleVal"))
+        {
+            muscleVal = PlayerPrefs.GetFloat("muscleVal");
+            threeWeight = PlayerPrefs.GetFloat("threeWeight");
+            weight = PlayerPrefs.GetFloat("weight");
+        }
+        allHealth = 0;
+        if (PlayerPrefs.HasKey("allHealth"))
+        {
+            allHealth = PlayerPrefs.GetInt("allHealth");
+        }
         healthMulRate = 1;
         if (PlayerPrefs.HasKey("healthMulRate"))
         {
@@ -36,6 +54,7 @@ public class DataController : MonoBehaviour
         while (true)
         {
             incHealth("health", Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
+            incAllHealth(Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
             yield return new WaitForSeconds(1f);
         }
     }
@@ -65,5 +84,32 @@ public class DataController : MonoBehaviour
     public float getMulHealth()
     {
         return healthMulRate;
+    }
+    public float getAllHealth()
+    {
+        return allHealth;
+    }
+    public void incAllHealth(int incNum)
+    {
+        allHealth = allHealth + incNum;
+        PlayerPrefs.SetInt("allHealth", allHealth);
+    }
+    public void saveInfo()
+    {
+        muscleVal = 20 + (float)Math.Log(getAllHealth(), 2);
+        threeWeight = 100 + (float)Math.Log(getAllHealth(), 1.064);
+        weight = 40 + (float)Math.Log(getAllHealth(), 1.66);
+    }
+    public float getMuscleVal()
+    {
+        return muscleVal;
+    }
+    public float getThreeWeight()
+    {
+        return threeWeight;
+    }
+    public float getWeight()
+    {
+        return weight;
     }
 }
