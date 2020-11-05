@@ -55,6 +55,7 @@ public class DataController : MonoBehaviour
         {
             incHealth("health", Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
             incAllHealth(Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
+            saveInfo();
             yield return new WaitForSeconds(1f);
         }
     }
