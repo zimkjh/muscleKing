@@ -8,9 +8,9 @@ public class BoosteButtonController : MonoBehaviour
 {
     public DataController dataController;
     public Text mT1, bT1;
-    public Text mT2, bT2, rT2;
-    public Text mT3, bT3, rT3;
-    public Text mT4, bT4, rT4;
+    public Text mT2, bT2;
+    public Text mT3, bT3;
+    public Text mT4, bT4;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,42 +20,45 @@ public class BoosteButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //텍스트 컨트롤
+        mT1.text = "스테로이드 보유량 : " + dataController.getDrug().ToString();
+        bT1.text = "스테로이드\n구매\n(광고)";
+
+        mT2.text = "10초간 초당 체력 10배";
+        bT2.text = "1개 소모";
+
+        mT3.text = "10초간 터치당 체력 10배";
+        bT3.text = "1개 소모";
+
+        mT4.text = "현재 체력 2배";
+        bT4.text = "5개 소모";
     }
     public void bB1OnClick()
     {
         dataController.incDrug(1);
-        //광고 고
-        //약 하나 추가
+        //광고 보는건 다른 admob에서 함
     }
-    public void bB2OnClick()
+    public void bB2OnClick() //초당 10배
     {
-        if (dataController.getDrug() >= 1)
+        if (dataController.getDrug() >= 1 && dataController.getDrugTimeSecondBool())
         {
-
+            dataController.decDrug(1);
+            dataController.drugTimeSecond();
         }
-        //약 있다면
-        //약 하나 빼고
-        //효과발동
     }
-    public void bB3OnClick()
+    public void bB3OnClick() //터치 10배
     {
-        if (dataController.getDrug() >= 1)
+        if (dataController.getDrug() >= 1 && dataController.getDrugTimeTouchBool())
         {
-
+            dataController.decDrug(1);
+            dataController.drugTimeTouchFunction();
         }
-        //약 있다면
-        //약 하나 빼고
-        //효과발동
     }
-    public void bB4OnClick()
+    public void bB4OnClick() //현재 체력 2배
     {
         if (dataController.getDrug() >= 5)
         {
-
+            dataController.decDrug(5);
+            dataController.twoTimesNowHealth();
         }
-        //약 있다면
-        //약 5개 빼고
-        //효과발동
     }
 }
