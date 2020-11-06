@@ -27,10 +27,6 @@ public class Admob_Controller : MonoBehaviour
         m_AD_RewardVideo = RewardBasedVideoAd.Instance;
         AD_Request();
     }
-    public void ass()
-    {
-
-    }
     public void AD_Request()
     {
         // 광고 요청 조건 자료구조 생성

@@ -16,8 +16,8 @@ public class TextDisplayer : MonoBehaviour
     private void Update()
     {
         health.text = "현재 체력 : " + dataController.getHealth("health").ToString();
-        healthPerTouch.text = Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth()).ToString() + " / 터치";
-        healthPerSecond.text = Convert.ToInt32(dataController.getHealth("healthPerSecond") * dataController.getMulHealth()).ToString() + " / 초";
+        healthPerTouch.text = Convert.ToInt32(dataController.getHealth("healthPerTouch") * dataController.getMulHealth() * dataController.getDrugRateTouch()).ToString() + " / 터치";
+        healthPerSecond.text = Convert.ToInt32(dataController.getHealth("healthPerSecond") * dataController.getMulHealth() * dataController.getDrugRate()).ToString() + " / 초";
         allHealth.text = "총 체력 : " + dataController.getAllHealth().ToString();
         muscleVal.text = "근육량 : " + dataController.getMuscleVal().ToString();
         threeWeight.text = "3대 : " + dataController.getThreeWeight().ToString();

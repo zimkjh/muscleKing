@@ -10,6 +10,12 @@ public class DataController : MonoBehaviour
     private float threeWeight;
     private float weight;
     private int drug;
+    private int drugTime = 0;
+    private int drugTimeTouch = 0;
+    private bool drugTimeSecondBool = false;
+    private bool drugTimeTouchBool = false;
+    private int drugRate = 1;
+    private int drugRateTouch = 1;
     static float healthMulRate;
     Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
@@ -59,8 +65,26 @@ public class DataController : MonoBehaviour
     {
         while (true)
         {
-            incHealth("health", Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
-            incAllHealth(Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate));
+            if (drugTimeSecondBool & drugTime >= 1)
+            {
+                drugTime -= 1;
+            }
+            if (drugTimeTouchBool & drugTimeTouch >= 1)
+            {
+                drugTimeTouch -= 1;
+            }
+            incHealth("health", Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate * drugRate));
+            incAllHealth(Convert.ToInt32(healthDict["healthPerSecond"] * healthMulRate * drugRate));
+            if (drugTime == 0)
+            {
+                drugTimeSecondBool = false;
+                drugRate = 1;
+            }
+            if (drugTimeTouch == 0)
+            {
+                drugTimeTouchBool = false;
+                drugRateTouch = 1;
+            }
             saveInfo();
             yield return new WaitForSeconds(1f);
         }
@@ -132,5 +156,48 @@ public class DataController : MonoBehaviour
     {
         drug = drug - decNum;
         PlayerPrefs.SetInt("drug", drug);
+    }
+    public void drugTimeTouchFunction()
+    {
+        drugTimeTouch = 10;
+        drugRateTouch = 10;
+        drugTimeTouchBool = true;
+    }
+    public void drugTimeSecond()
+    {
+        drugTime = 10;
+        drugRate = 10;
+        drugTimeSecondBool = true;
+    }
+    public int getDrugRate()
+    {
+        return drugRate;
+    }
+    public int getDrugRateTouch()
+    {
+        return drugRateTouch;
+    }
+    public bool getDrugTimeSecondBool()
+    {
+        if (drugTimeSecondBool)
+        {
+            return false;
+        }
+        return true;
+    }
+    public bool getDrugTimeTouchBool()
+    {
+        if (drugTimeTouchBool)
+        {
+            return false;
+        }
+        return true;
+    }
+    public void twoTimesNowHealth()
+    {
+        int temp = getHealth("health");
+        temp *= 2;
+        healthDict["health"] = temp;
+        setHealth("health", temp);
     }
 }
