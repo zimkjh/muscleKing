@@ -10,7 +10,6 @@ public class ScrollViewController : MonoBehaviour
     public GameObject gymScrollView;
     public GameObject equipmentScrollView;
     public GameObject boosterScrollView;
-    public GameObject moneyScrollView;
     private List<GameObject> scrollViewList = new List<GameObject>();
     void Start()
     {
@@ -19,7 +18,6 @@ public class ScrollViewController : MonoBehaviour
         scrollViewList.Add(gymScrollView);
         scrollViewList.Add(equipmentScrollView);
         scrollViewList.Add(boosterScrollView);
-        scrollViewList.Add(moneyScrollView);
         exerciseScrollView.SetActive(true);
     }
     private void scrollViewUnvisiable()
@@ -53,10 +51,5 @@ public class ScrollViewController : MonoBehaviour
     {
         scrollViewUnvisiable();
         boosterScrollView.SetActive(true);
-    }
-    public void moneyButtonOnClick()
-    {
-        scrollViewUnvisiable();
-        moneyScrollView.SetActive(true);
     }
 }

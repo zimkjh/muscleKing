@@ -116,7 +116,7 @@ public class DataController : MonoBehaviour
     {
         return healthMulRate;
     }
-    public float getAllHealth()
+    public int getAllHealth()
     {
         return allHealth;
     }
