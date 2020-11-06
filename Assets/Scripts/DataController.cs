@@ -9,6 +9,7 @@ public class DataController : MonoBehaviour
     private float muscleVal;
     private float threeWeight;
     private float weight;
+    private int drug;
     static float healthMulRate;
     Dictionary<string, int> healthDict = new Dictionary<string, int>();
     void Awake()
@@ -16,6 +17,11 @@ public class DataController : MonoBehaviour
         muscleVal = 20;
         threeWeight = 100;
         weight = 40;
+        drug = 0;
+        if (PlayerPrefs.HasKey("drug"))
+        {
+            drug = PlayerPrefs.GetInt("drug");
+        }
         if (PlayerPrefs.HasKey("muscleVal"))
         {
             muscleVal = PlayerPrefs.GetFloat("muscleVal");
@@ -112,5 +118,19 @@ public class DataController : MonoBehaviour
     public float getWeight()
     {
         return weight;
+    }
+    public int getDrug()
+    {
+        return drug;
+    }
+    public void incDrug(int incNum)
+    {
+        drug = drug + incNum;
+        PlayerPrefs.SetInt("drug", drug);
+    }
+    public void decDrug(int decNum)
+    {
+        drug = drug - decNum;
+        PlayerPrefs.SetInt("drug", drug);
     }
 }
