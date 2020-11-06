@@ -7240,6 +7240,7 @@ Transform:
   - {fileID: 1840770981}
   - {fileID: 115482551}
   - {fileID: 388732830}
+  - {fileID: 1052931174}
   - {fileID: 735807949}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -10169,9 +10170,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388732831}
-        m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB4OnClick
+      - m_Target: {fileID: 1052931175}
+        m_TargetAssemblyTypeName: EquipmentButtonController, Assembly-CSharp
+        m_MethodName: eqB4OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10291,7 +10292,7 @@ RectTransform:
   - {fileID: 887672144}
   - {fileID: 687663388}
   m_Father: {fileID: 519420032}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10733,9 +10734,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388732831}
-        m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB5OnClick
+      - m_Target: {fileID: 1052931175}
+        m_TargetAssemblyTypeName: EquipmentButtonController, Assembly-CSharp
+        m_MethodName: eqB5OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11511,9 +11512,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388732831}
-        m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB3OnClick
+      - m_Target: {fileID: 1052931175}
+        m_TargetAssemblyTypeName: EquipmentButtonController, Assembly-CSharp
+        m_MethodName: eqB3OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12548,9 +12549,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388732831}
-        m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB2OnClick
+      - m_Target: {fileID: 1052931175}
+        m_TargetAssemblyTypeName: EquipmentButtonController, Assembly-CSharp
+        m_MethodName: eqB2OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13998,6 +13999,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052782921}
   m_CullTransparentMesh: 0
+--- !u!1 &1052931173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052931174}
+  - component: {fileID: 1052931175}
+  m_Layer: 0
+  m_Name: EquipmentButtonController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1052931174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052931173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052931175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052931173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811de358bc233c04d9924955857d49fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mT1: {fileID: 462780213}
+  pT1: {fileID: 594886517}
+  rT1: {fileID: 1736642412}
+  mT2: {fileID: 1378948876}
+  pT2: {fileID: 1871107607}
+  rT2: {fileID: 223509497}
+  mT3: {fileID: 2084763914}
+  pT3: {fileID: 647221444}
+  rT3: {fileID: 1215147428}
+  mT4: {fileID: 415288334}
+  pT4: {fileID: 1819799222}
+  rT4: {fileID: 772641785}
+  mT5: {fileID: 1203221333}
+  pT5: {fileID: 1140631160}
+  rT5: {fileID: 402325937}
+  dataController: {fileID: 535551939}
 --- !u!1 &1059182326
 GameObject:
   m_ObjectHideFlags: 0
@@ -22444,9 +22504,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 388732831}
-        m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB1OnClick
+      - m_Target: {fileID: 1052931175}
+        m_TargetAssemblyTypeName: EquipmentButtonController, Assembly-CSharp
+        m_MethodName: eqB1OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
