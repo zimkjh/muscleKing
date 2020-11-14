@@ -1,0 +1,37 @@
+[
+    {
+        "name": "팔굽혀펴기",
+        "price": 10.0,
+        "priceRate": 1.2,
+        "effect": 1.0,
+        "effectRate": 1.0
+    },
+    {
+        "name": "윗몸일으키기",
+        "price": 100.0,
+        "priceRate": 1.4,
+        "effect": 5.0,
+        "effectRate": 5.0
+    },
+    {
+        "name": "턱걸이",
+        "price": 5000.0,
+        "priceRate": 1.6,
+        "effect": 150.0,
+        "effectRate": 20.0
+    },
+    {
+        "name": "벤치프레스",
+        "price": 20000.0,
+        "priceRate": 1.8,
+        "effect": 150.0,
+        "effectRate": 20.0
+    },
+    {
+        "name": "데드리프트",
+        "price": 15000.0,
+        "priceRate": 2.0,
+        "effect": 500.0,
+        "effectRate": 50.0
+    }
+]
