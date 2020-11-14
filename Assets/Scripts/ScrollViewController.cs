@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScrollViewController : MonoBehaviour
 {
-
     public GameObject exerciseScrollView;
     public GameObject proteinScrollView;
     public GameObject gymScrollView;
