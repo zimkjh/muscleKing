@@ -114,45 +114,54 @@ public class GymButtonController : MonoBehaviour
     {
         if (gymItem1["레벨"] < 1)
         {
-            buyProcess("헬스장_1");
-            mT1.text = "야외 헬스장\n구매 완료";
+            if (buyProcess("헬스장_1"))
+            {
+                mT1.text = "야외 헬스장\n구매 완료";
+            }
         }
     }
     public void gB2OnClick()
     {
         if (gymItem2["레벨"] < 1)
         {
-            buyProcess("헬스장_2");
-            mT2.text = "동네 헬스장\n구매 완료";
+            if (buyProcess("헬스장_2"))
+            {
+                mT2.text = "동네 헬스장\n구매 완료";
+            }
         }
     }
     public void gB3OnClick()
     {
         if (gymItem3["레벨"] < 1)
         {
-            buyProcess("헬스장_3");
-            mT3.text = "시내 헬스장\n구매 완료";
+            if (buyProcess("헬스장_3"))
+            {
+                mT3.text = "시내 헬스장\n구매 완료";
+            }
         }
     }
     public void gB4OnClick()
     {
         if (gymItem4["레벨"] < 1)
         {
-            buyProcess("헬스장_4");
-            mT4.text = "단체 PT\n구매 완료";
+            if (buyProcess("헬스장_4"))
+            {
+                mT4.text = "단체 PT\n구매 완료";
+            }
         }
     }
     public void gB5OnClick()
     {
         if (gymItem5["레벨"] < 1)
         {
-            buyProcess("헬스장_5");
-            mT5.text = "개인 PT\n구매 완료";
-
+            if (buyProcess("헬스장_5"))
+            {
+                mT5.text = "개인 PT\n구매 완료";
+            }
         }
     }
 
-    void buyProcess(string name)
+    bool buyProcess(string name)
     {
         if (dataController.getHealth("health") > gymItemList[name]["가격"])
         {
@@ -168,6 +177,8 @@ public class GymButtonController : MonoBehaviour
             PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(gymItemList[name]["레벨"]));
             PlayerPrefs.SetInt(savePrice, Convert.ToInt32(gymItemList[name]["가격"]));
             PlayerPrefs.SetFloat(saveEffect, gymItemList[name]["효과"]);
+            return true;
         }
+        return false;
     }
 }

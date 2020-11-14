@@ -85,7 +85,16 @@ public class EquipmentButtonController : MonoBehaviour
         {
             mT5.text = "언더아머\n3대 500 이상 구매 가능";
         }
-
+        pT1.text = "3대 200";
+        rT1.text = "구매 불가능";
+        pT2.text = "3대 300";
+        rT2.text = "구매 불가능";
+        pT3.text = "3대 400";
+        rT3.text = "구매 불가능";
+        pT4.text = "3대 450";
+        rT4.text = "구매 불가능";
+        pT5.text = "3대 500";
+        rT5.text = "구매 불가능";
         // pT1.text = equipItem1["가격"].ToString();
         // rT1.text = "+" + ((equipItem1["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((equipItem1["효과"] - 1) * 100).ToString() + "% 체력 / 초";
 
@@ -104,60 +113,95 @@ public class EquipmentButtonController : MonoBehaviour
     }
     void Update()
     {
-
-
+        if (dataController.getThreeWeight() > 200)
+        {
+            if (equipItem1["레벨"] == 0) { rT1.text = "구매 가능"; }
+            else { rT1.text = "상위 80%달성"; }
+        }
+        if (dataController.getThreeWeight() > 300)
+        {
+            if (equipItem2["레벨"] == 0) { rT2.text = "구매 가능"; }
+            else { rT2.text = "상위 50%달성"; }
+        }
+        if (dataController.getThreeWeight() > 400)
+        {
+            if (equipItem3["레벨"] == 0) { rT3.text = "구매 가능"; }
+            else { rT3.text = "상위 15%달성"; }
+        }
+        if (dataController.getThreeWeight() > 450)
+        {
+            if (equipItem4["레벨"] == 0) { rT4.text = "구매 가능"; }
+            else { rT4.text = "상위 5%달성"; }
+        }
+        if (dataController.getThreeWeight() > 500)
+        {
+            if (equipItem5["레벨"] == 0) { rT5.text = "구매 가능"; }
+            else { rT5.text = "상위 1%달성"; }
+        }
     }
     public void eqB1OnClick()
     {
         if (equipItem1["레벨"] < 1)
         {
-            buyProcess("장비_1");
-            mT1.text = "물병\n구매 완료";
+            if (buyProcess("장비_1"))
+            {
+                mT1.text = "물병\n구매 완료";
+            }
         }
     }
     public void eqB2OnClick()
     {
         if (equipItem2["레벨"] < 1)
         {
-            buyProcess("장비_2");
-            mT2.text = "손목 스트랩\n구매 완료";
+            if (buyProcess("장비_2"))
+            {
+                mT2.text = "손목 스트랩\n구매 완료";
+            }
         }
     }
     public void eqB3OnClick()
     {
         if (equipItem3["레벨"] < 1)
         {
-            buyProcess("장비_3");
-            mT3.text = "헬스 장갑\n구매 완료";
+            if (buyProcess("장비_3"))
+            {
+                mT3.text = "헬스 장갑\n구매 완료";
+            }
         }
     }
     public void eqB4OnClick()
     {
         if (equipItem4["레벨"] < 1)
         {
-            buyProcess("장비_4");
-            mT4.text = "헬스 벨트\n구매 완료";
+            if (buyProcess("장비_4"))
+            {
+                mT4.text = "헬스 벨트\n구매 완료";
+            }
         }
     }
     public void eqB5OnClick()
     {
         if (equipItem5["레벨"] < 1)
         {
-            buyProcess("장비_5");
-            mT5.text = "언더아머\n구매 완료";
-
+            if (buyProcess("장비_5"))
+            {
+                mT5.text = "언더아머\n구매 완료";
+            }
         }
     }
 
-    void buyProcess(string name)
+    bool buyProcess(string name)
     {
-        if (dataController.getAllHealth() > equipItemList[name]["가격"])
+        if (dataController.getThreeWeight() > equipItemList[name]["가격"])
         {
             equipItemList[name]["레벨"] += 1;
 
             string saveLevel = name + "레벨";
-
+            string savePrice = name + "가격";
+            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(equipItemList[name]["가격"]));
             PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(equipItemList[name]["레벨"]));
+            return true;
         }
+        return false;
     }
 }
