@@ -4,118 +4,73 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 public class ProteinButtonController : MonoBehaviour
 {
-    public Text mT1, pT1, rT1;
-    public Text mT2, pT2, rT2;
-    public Text mT3, pT3, rT3;
-    public Text mT4, pT4, rT4;
-    public Text mT5, pT5, rT5;
-    string[] nameOfProtein = new string[] { "계란", "두유", "닭가슴살", "WPC보충제", "WPIH보충제" };
-    float[] priceOfProtein = new float[] { 20, 200, 10000, 40000, 300000 };
-    float[] effectOfProtein = new float[] { 5, 25, 150, 750, 2500 };
-    float[] effectRateOfProtein = new float[] { 5, 25, 50, 100, 250 };
-    float[] priceRateOfProtein = new float[] { 1.2f, 1.4f, 1.6f, 1.8f, 2 };
+    public Text[] mainTextList = new Text[5];
+    public Text[] priceTextList = new Text[5];
+    public Text[] resultTextList = new Text[5];
     public DataController dataController;
-    Dictionary<string, float> proteinItem1 = new Dictionary<string, float>();
-    Dictionary<string, float> proteinItem2 = new Dictionary<string, float>();
-    Dictionary<string, float> proteinItem3 = new Dictionary<string, float>();
-    Dictionary<string, float> proteinItem4 = new Dictionary<string, float>();
-    Dictionary<string, float> proteinItem5 = new Dictionary<string, float>();
-    Dictionary<string, Dictionary<string, float>> proteinItemList = new Dictionary<string, Dictionary<string, float>>();
+    public ProteinObject[] proteinObjectList;
+    Dictionary<string, ProteinObject> proteinItemList = new Dictionary<string, ProteinObject>();
 
     void Start()
     {
-        proteinItemList["계란"] = proteinItem1;
-        proteinItemList["두유"] = proteinItem2;
-        proteinItemList["닭가슴살"] = proteinItem3;
-        proteinItemList["WPC보충제"] = proteinItem4;
-        proteinItemList["WPIH보충제"] = proteinItem5;
-        int index = 0;
-        foreach (string name in nameOfProtein)
+        string data = File.ReadAllText(Application.dataPath + "/Resources/proteinObjectList.json");
+        proteinObjectList = JsonConvert.DeserializeObject<ProteinObject[]>(data);
+        foreach (ProteinObject proteinObject in proteinObjectList)
         {
-            if (PlayerPrefs.HasKey(name + "가격")) //샀다는 뜻
+            proteinItemList[proteinObject.name] = proteinObject;
+            if (PlayerPrefs.HasKey(proteinObject.name + "가격")) //샀다는 뜻
             {
-                proteinItemList[name]["가격"] = PlayerPrefs.GetInt(name + "가격");
-                proteinItemList[name]["효과"] = PlayerPrefs.GetInt(name + "효과");
-                proteinItemList[name]["레벨"] = PlayerPrefs.GetInt(name + "레벨");
+                proteinItemList[proteinObject.name].price = PlayerPrefs.GetInt(proteinObject.name + "가격");
+                proteinItemList[proteinObject.name].effect = PlayerPrefs.GetInt(proteinObject.name + "효과");
+                proteinItemList[proteinObject.name].setLevel(PlayerPrefs.GetInt(proteinObject.name + "레벨"));
             }
             else //안샀음
             {
-                proteinItemList[name]["가격"] = priceOfProtein[index];
-                proteinItemList[name]["효과"] = effectOfProtein[index];
-                proteinItemList[name]["레벨"] = 0;
+                proteinItemList[proteinObject.name].price = proteinObject.price;
+                proteinItemList[proteinObject.name].effect = proteinObject.effect;
+                proteinItemList[proteinObject.name].setLevel(0);
             }
-            proteinItemList[name]["체력증가량"] = effectRateOfProtein[index];
-            proteinItemList[name]["가격증가량"] = priceRateOfProtein[index];
-            index += 1;
+            proteinItemList[proteinObject.name].priceRate = proteinObject.priceRate;
+            proteinItemList[proteinObject.name].effectRate = proteinObject.effectRate;
         }
-
     }
     void Update()
     {
-        mT1.text = "계란\n" + proteinItemList["계란"]["레벨"] + "lv";
-        mT2.text = "두유\n" + proteinItemList["두유"]["레벨"] + "lv";
-        mT3.text = "닭가슴살\n" + proteinItemList["닭가슴살"]["레벨"] + "lv";
-        mT4.text = "WPC보충제\n" + proteinItemList["WPC보충제"]["레벨"] + "lv";
-        mT5.text = "WPIH보충제 + 영양제\n" + proteinItemList["WPIH보충제"]["레벨"] + "lv";
-
-        pT1.text = proteinItem1["가격"].ToString();
-        rT1.text = "+" + proteinItem1["효과"].ToString() + "체력 / 초";
-
-        pT2.text = proteinItem2["가격"].ToString();
-        rT2.text = "+" + proteinItem2["효과"].ToString() + "체력 / 초";
-
-        pT3.text = proteinItem3["가격"].ToString();
-        rT3.text = "+" + proteinItem3["효과"].ToString() + "체력 / 초";
-
-        pT4.text = proteinItem4["가격"].ToString();
-        rT4.text = "+" + proteinItem4["효과"].ToString() + "체력 / 초";
-
-        pT5.text = proteinItem5["가격"].ToString();
-        rT5.text = "+" + proteinItem5["효과"].ToString() + "체력 / 초";
-
+        for (int index = 0; index < proteinObjectList.Length; index++)
+        {
+            string nowName = proteinObjectList[index].name;
+            mainTextList[index].text = nowName + "\n" + proteinItemList[nowName].getLevel().ToString() + "lv";
+            priceTextList[index].text = proteinObjectList[index].price.ToString();
+            resultTextList[index].text = "+" + proteinObjectList[index].effect.ToString() + "체력 / 초";
+        }
     }
-    public void pB1OnClick()
+    public void buyButtonOnClick(Text proteinMainText)
     {
-        buyProcess("계란");
+        buyProcess(proteinMainText.text.Split(new string[] { "\n" }, StringSplitOptions.None)[0]);
     }
-    public void pB2OnClick()
-    {
-        buyProcess("두유");
-    }
-    public void pB3OnClick()
-    {
-        buyProcess("닭가슴살");
-    }
-    public void pB4OnClick()
-    {
-        buyProcess("WPC보충제");
-    }
-    public void pB5OnClick()
-    {
-        buyProcess("WPIH보충제");
-    }
-
     void buyProcess(string name)
     {
-        if (dataController.getHealth("health") > proteinItemList[name]["가격"])
+        if (dataController.getHealth("health") > proteinItemList[name].price)
         {
-            dataController.decHealth("health", Convert.ToInt32(proteinItemList[name]["가격"]));
-            dataController.incHealth("healthPerSecond", Convert.ToInt32(proteinItemList[name]["효과"]));
+            dataController.decHealth("health", Convert.ToInt32(proteinItemList[name].price));
+            dataController.incHealth("healthPerTouch", Convert.ToInt32(proteinItemList[name].effect));
 
-            proteinItemList[name]["레벨"] += 1;
-            proteinItemList[name]["가격"] = Convert.ToInt32(proteinItemList[name]["가격"] * proteinItemList[name]["가격증가량"]);
-            proteinItemList[name]["효과"] += proteinItemList[name]["체력증가량"];
+            proteinItemList[name].setLevel(proteinItemList[name].getLevel() + 1);
+            proteinItemList[name].price = Convert.ToInt32(proteinItemList[name].price * proteinItemList[name].priceRate);
+            proteinItemList[name].effect += proteinItemList[name].effectRate;
 
             string saveLevel = name + "레벨";
             string savePrice = name + "가격";
             string saveEffect = name + "효과";
 
-            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(proteinItemList[name]["레벨"]));
-            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(proteinItemList[name]["가격"]));
-            PlayerPrefs.SetInt(saveEffect, Convert.ToInt32(proteinItemList[name]["효과"]));
+            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(proteinItemList[name].price));
+            PlayerPrefs.SetInt(saveEffect, Convert.ToInt32(proteinItemList[name].effect));
+            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(proteinItemList[name].getLevel()));
         }
     }
 }

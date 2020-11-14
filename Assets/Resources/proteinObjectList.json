@@ -1,0 +1,37 @@
+[
+    {
+        "name": "계란",
+        "price": 20.0,
+        "priceRate": 5.0,
+        "effect": 5.0,
+        "effectRate": 1.2
+    },
+    {
+        "name": "두유",
+        "price": 200.0,
+        "priceRate": 25.0,
+        "effect": 25.0,
+        "effectRate": 1.4
+    },
+    {
+        "name": "닭가슴살",
+        "price": 10000.0,
+        "priceRate": 150.0,
+        "effect": 50.0,
+        "effectRate": 1.6
+    },
+    {
+        "name": "WPC보충제",
+        "price": 40000.0,
+        "priceRate": 750.0,
+        "effect": 100.0,
+        "effectRate": 1.8
+    },
+    {
+        "name": "WPIH보충제",
+        "price": 300000.0,
+        "priceRate": 2500.0,
+        "effect": 250.0,
+        "effectRate": 2.0
+    }
+]

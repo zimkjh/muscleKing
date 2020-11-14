@@ -1682,21 +1682,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6041e99a84e184ba23d6cb3f99c40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mT1: {fileID: 1359528798}
-  pT1: {fileID: 499542201}
-  rT1: {fileID: 112533235}
-  mT2: {fileID: 1224207808}
-  pT2: {fileID: 22439258}
-  rT2: {fileID: 425929480}
-  mT3: {fileID: 40026344}
-  pT3: {fileID: 260723641}
-  rT3: {fileID: 1371123666}
-  mT4: {fileID: 1747285676}
-  pT4: {fileID: 1439848321}
-  rT4: {fileID: 346743239}
-  mT5: {fileID: 785245570}
-  pT5: {fileID: 1231230640}
-  rT5: {fileID: 1334838750}
+  mainTextList:
+  - {fileID: 1359528798}
+  - {fileID: 1224207808}
+  - {fileID: 40026344}
+  - {fileID: 1747285676}
+  - {fileID: 785245570}
+  priceTextList:
+  - {fileID: 499542201}
+  - {fileID: 22439258}
+  - {fileID: 260723641}
+  - {fileID: 1439848321}
+  - {fileID: 1231230640}
+  resultTextList:
+  - {fileID: 112533235}
+  - {fileID: 425929480}
+  - {fileID: 1371123666}
+  - {fileID: 346743239}
+  - {fileID: 1334838750}
   dataController: {fileID: 535551939}
 --- !u!1 &116175177
 GameObject:
@@ -7006,12 +7009,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115482552}
-        m_TargetAssemblyTypeName: proteinButtonController, Assembly-CSharp
-        m_MethodName: pB2OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ProteinButtonController, Assembly-CSharp
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1224207808}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12867,12 +12870,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115482552}
-        m_TargetAssemblyTypeName: proteinButtonController, Assembly-CSharp
-        m_MethodName: pB4OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ProteinButtonController, Assembly-CSharp
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1747285676}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13820,12 +13823,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115482552}
-        m_TargetAssemblyTypeName: proteinButtonController, Assembly-CSharp
-        m_MethodName: pB1OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ProteinButtonController, Assembly-CSharp
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1359528798}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16903,12 +16906,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115482552}
-        m_TargetAssemblyTypeName: proteinButtonController, Assembly-CSharp
-        m_MethodName: pB3OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ProteinButtonController, Assembly-CSharp
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 40026344}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18147,12 +18150,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 115482552}
-        m_TargetAssemblyTypeName: proteinButtonController, Assembly-CSharp
-        m_MethodName: pB5OnClick
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ProteinButtonController, Assembly-CSharp
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 785245570}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
