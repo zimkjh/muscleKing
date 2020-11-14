@@ -34,6 +34,8 @@ public class ExerciseButtonController : MonoBehaviour
                 exerciseItemList[exerciseObject.name].effect = exerciseObject.effect;
                 exerciseItemList[exerciseObject.name].setLevel(0);
             }
+            exerciseItemList[exerciseObject.name].priceRate = exerciseObject.priceRate;
+            exerciseItemList[exerciseObject.name].effectRate = exerciseObject.effectRate;
         }
     }
     void Update()
