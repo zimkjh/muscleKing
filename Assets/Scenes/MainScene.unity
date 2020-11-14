@@ -3471,11 +3471,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840770982}
         m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
-        m_MethodName: eB1OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1854851418}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4658,11 +4658,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840770982}
         m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
-        m_MethodName: eB4OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1273090109}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10564,11 +10564,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840770982}
         m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
-        m_MethodName: eB5OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1858947707}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11167,7 +11167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataController: {fileID: 535551939}
-  ad: {fileID: 1695100819}
+  ad: {fileID: 0}
   mT1: {fileID: 1527460284}
   bT1: {fileID: 1124328814}
   mT2: {fileID: 1486034864}
@@ -13329,11 +13329,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840770982}
         m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
-        m_MethodName: eB2OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1315539782}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14322,11 +14322,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840770982}
         m_TargetAssemblyTypeName: ExerciseButtonController, Assembly-CSharp
-        m_MethodName: eB3OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 359361168}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18923,7 +18923,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695100818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f94ca1813952f449b7db8e1264267b5, type: 3}
+  m_Script: {fileID: 11500000, guid: ce37cfcf2e3ff4bc8bdd2df4533973c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1695100820
@@ -20383,21 +20383,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fdf3424d8750f4c89104fb8042bdc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mT1: {fileID: 1854851418}
-  pT1: {fileID: 702901073}
-  rT1: {fileID: 1283035514}
-  mT2: {fileID: 1315539782}
-  pT2: {fileID: 154886950}
-  rT2: {fileID: 1724848957}
-  mT3: {fileID: 359361168}
-  pT3: {fileID: 972811350}
-  rT3: {fileID: 1477330164}
-  mT4: {fileID: 1273090109}
-  pT4: {fileID: 2040251280}
-  rT4: {fileID: 139063636}
-  mT5: {fileID: 1858947707}
-  pT5: {fileID: 1223002622}
-  rT5: {fileID: 1205718512}
+  mainTextList:
+  - {fileID: 1854851418}
+  - {fileID: 1315539782}
+  - {fileID: 359361168}
+  - {fileID: 1273090109}
+  - {fileID: 1858947707}
+  priceTextList:
+  - {fileID: 702901073}
+  - {fileID: 154886950}
+  - {fileID: 972811350}
+  - {fileID: 2040251280}
+  - {fileID: 1223002622}
+  resultTextList:
+  - {fileID: 1283035514}
+  - {fileID: 1724848957}
+  - {fileID: 1477330164}
+  - {fileID: 139063636}
+  - {fileID: 1205718512}
   dataController: {fileID: 535551939}
 --- !u!1 &1854851416
 GameObject:
@@ -21858,7 +21861,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993636133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d2de6fdf401594a886b37339b06df2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ce4ff3e99044428b96aaafd8e5b4c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1993636135
