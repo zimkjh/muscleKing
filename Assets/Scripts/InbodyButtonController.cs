@@ -9,8 +9,12 @@ public class InbodyButtonController : MonoBehaviour
     public GameObject image;
     public void openOnClick()
     {
-        image.SetActive(true);
+        
+        if(image.activeSelf) {image.SetActive(false);}
+        else {image.SetActive(true);}
+        
     }
+    
     public void closeOnClick()
     {
         image.SetActive(false);

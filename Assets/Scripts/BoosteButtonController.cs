@@ -7,6 +7,7 @@ using System;
 public class BoosteButtonController : MonoBehaviour
 {
     public DataController dataController;
+    public Test ad;
     public Text mT1, bT1;
     public Text mT2, bT2;
     public Text mT3, bT3;
@@ -34,6 +35,7 @@ public class BoosteButtonController : MonoBehaviour
     }
     public void bB1OnClick()
     {
+        ad.AdsShow();
         dataController.incDrug(1);
         //광고 보는건 다른 admob에서 함
     }
