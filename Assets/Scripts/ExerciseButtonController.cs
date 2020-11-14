@@ -43,7 +43,7 @@ public class ExerciseButtonController : MonoBehaviour
         for (int index = 0; index < exerciseObjectList.Length; index++)
         {
             string nowName = exerciseObjectList[index].name;
-            mainTextList[index].text = nowName + "\n" + exerciseItemList[nowName].getLevel() + "lv";
+            mainTextList[index].text = nowName + "\n" + exerciseItemList[nowName].getLevel().ToString() + "lv";
             priceTextList[index].text = exerciseObjectList[index].price.ToString();
             resultTextList[index].text = "+" + exerciseObjectList[index].effect.ToString() + "체력 / 터치";
         }
