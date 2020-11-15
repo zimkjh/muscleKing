@@ -1100,11 +1100,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388732831}
         m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB1OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 686731723}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4966,21 +4966,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd2618b77a1ad9448904b85fab9f331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mT1: {fileID: 686731723}
-  pT1: {fileID: 546338795}
-  rT1: {fileID: 1951622793}
-  mT2: {fileID: 846418056}
-  pT2: {fileID: 1052782923}
-  rT2: {fileID: 287426440}
-  mT3: {fileID: 755138007}
-  pT3: {fileID: 474395361}
-  rT3: {fileID: 1534925076}
-  mT4: {fileID: 2140818267}
-  pT4: {fileID: 1989289125}
-  rT4: {fileID: 35186520}
-  mT5: {fileID: 433466533}
-  pT5: {fileID: 2023424246}
-  rT5: {fileID: 834413206}
+  mainTextList:
+  - {fileID: 686731723}
+  - {fileID: 846418056}
+  - {fileID: 755138007}
+  - {fileID: 2140818267}
+  - {fileID: 433466533}
+  priceTextList:
+  - {fileID: 546338795}
+  - {fileID: 1052782923}
+  - {fileID: 474395361}
+  - {fileID: 1989289125}
+  - {fileID: 2023424246}
+  resultTextList:
+  - {fileID: 1951622793}
+  - {fileID: 287426440}
+  - {fileID: 1534925076}
+  - {fileID: 35186520}
+  - {fileID: 834413206}
   dataController: {fileID: 535551939}
 --- !u!1 &402325935
 GameObject:
@@ -6346,11 +6349,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388732831}
         m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB3OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 755138007}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12046,11 +12049,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388732831}
         m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB5OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 433466533}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17916,11 +17919,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388732831}
         m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB2OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 846418056}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21370,11 +21373,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388732831}
         m_TargetAssemblyTypeName: GymButtonController, Assembly-CSharp
-        m_MethodName: gB4OnClick
-        m_Mode: 1
+        m_MethodName: buyButtonOnClick
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2140818267}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

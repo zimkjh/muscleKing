@@ -4,181 +4,85 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 public class GymButtonController : MonoBehaviour
 {
-    //public Text mT1, mT2, mT3, mT4, mT5, sT1, sT2, sT3, sT4, sT5;
-    public Text mT1, pT1, rT1;
-    public Text mT2, pT2, rT2;
-    public Text mT3, pT3, rT3;
-    public Text mT4, pT4, rT4;
-    public Text mT5, pT5, rT5;
-    string[] nameOfGym = new string[] { "헬스장_1", "헬스장_2", "헬스장_3", "헬스장_4", "헬스장_5" };
-    float[] priceOfGym = new float[] { 1000000, 10000000, 50000000, 200000000, 1000000000 }; //1백만, 1천만, 5천만, 2억, 10억
-    float[] effectOfGym = new float[] { 1.1f, 1.2f, 1.3f, 1.4f, 1.5f };
+    public Text[] mainTextList = new Text[5];
+    public Text[] priceTextList = new Text[5];
+    public Text[] resultTextList = new Text[5];
     public DataController dataController;
-    Dictionary<string, float> gymItem1 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem2 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem3 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem4 = new Dictionary<string, float>();
-    Dictionary<string, float> gymItem5 = new Dictionary<string, float>();
-    Dictionary<string, Dictionary<string, float>> gymItemList = new Dictionary<string, Dictionary<string, float>>();
+    public GymObject[] gymObjectList;
+    Dictionary<string, GymObject> gymItemList = new Dictionary<string, GymObject>();
 
     void Start()
     {
-        gymItemList["헬스장_1"] = gymItem1;
-        gymItemList["헬스장_2"] = gymItem2;
-        gymItemList["헬스장_3"] = gymItem3;
-        gymItemList["헬스장_4"] = gymItem4;
-        gymItemList["헬스장_5"] = gymItem5;
+        string data = File.ReadAllText(Application.dataPath + "/Resources/gymObjectList.json");
+        gymObjectList = JsonConvert.DeserializeObject<GymObject[]>(data);
         int index = 0;
-        foreach (string name in nameOfGym)
+        foreach (GymObject gymObject in gymObjectList)
         {
-            if (PlayerPrefs.HasKey(name + "가격")) //샀다는 뜻
+            gymItemList[gymObject.name] = gymObject;
+            if (PlayerPrefs.HasKey(gymObject.name + "가격")) //샀다는 뜻
             {
-                gymItemList[name]["가격"] = PlayerPrefs.GetInt(name + "가격");
-                gymItemList[name]["효과"] = PlayerPrefs.GetFloat(name + "효과");
-                gymItemList[name]["레벨"] = PlayerPrefs.GetInt(name + "레벨");
+                gymItemList[gymObject.name].price = PlayerPrefs.GetInt(gymObject.name + "가격");
+                gymItemList[gymObject.name].effect = PlayerPrefs.GetInt(gymObject.name + "효과");
+                gymItemList[gymObject.name].setLevel(PlayerPrefs.GetInt(gymObject.name + "레벨"));
             }
             else //안샀음
             {
-                gymItemList[name]["가격"] = priceOfGym[index];
-                gymItemList[name]["효과"] = effectOfGym[index];
-                gymItemList[name]["레벨"] = 0;
+                gymItemList[gymObject.name].price = gymObject.price;
+                gymItemList[gymObject.name].effect = gymObject.effect;
+                gymItemList[gymObject.name].setLevel(0);
             }
+            if (gymObject.getLevel() == 1)
+            {
+                mainTextList[index].text = gymObject.name.Split(new string[] { "\n" }, StringSplitOptions.None)[0] + "\n구매 완료";
+            }
+            else
+            {
+                mainTextList[index].text = gymObject.name.Split(new string[] { "\n" }, StringSplitOptions.None)[0] + "\n구매 가능";
+            }
+            priceTextList[index].text = gymItemList[gymObject.name].price.ToString();
+            resultTextList[index].text = "+" + ((gymItemList[gymObject.name].effect - 1) * 100).ToString() + "% 체력 / 터치\n+" + ((gymItemList[gymObject.name].effect - 1) * 100).ToString() + "% 체력 / 초";
             index += 1;
         }
-        if (gymItem1["레벨"] == 1)
-        {
-            mT1.text = "야외 헬스장\n구매 완료";
-        }
-        else
-        {
-            mT1.text = "야외 헬스장\n구매 가능";
-        }
-        if (gymItem2["레벨"] == 1)
-        {
-            mT2.text = "동네 헬스장\n구매 완료";
-        }
-        else
-        {
-            mT2.text = "동네 헬스장\n구매 가능";
-        }
-        if (gymItem3["레벨"] == 1)
-        {
-            mT3.text = "시내 헬스장\n구매 완료";
-        }
-        else
-        {
-            mT3.text = "시내 헬스장\n구매 가능";
-        }
-        if (gymItem4["레벨"] == 1)
-        {
-            mT4.text = "단체 PT\n구매 완료";
-        }
-        else
-        {
-            mT4.text = "단체 PT\n구매 가능";
-        }
-        if (gymItem5["레벨"] == 1)
-        {
-            mT5.text = "개인 PT\n구매 완료";
-        }
-        else
-        {
-            mT5.text = "개인 PT\n구매 가능";
-        }
-
-        pT1.text = gymItem1["가격"].ToString();
-        rT1.text = "+" + ((gymItem1["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem1["효과"] - 1) * 100).ToString() + "% 체력 / 초";
-
-        pT2.text = gymItem2["가격"].ToString();
-        rT2.text = "+" + ((gymItem2["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem2["효과"] - 1) * 100).ToString() + "% 체력 / 초";
-
-        pT3.text = gymItem3["가격"].ToString();
-        rT3.text = "+" + ((gymItem3["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem3["효과"] - 1) * 100).ToString() + "% 체력 / 초";
-
-        pT4.text = gymItem4["가격"].ToString();
-        rT4.text = "+" + ((gymItem4["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem4["효과"] - 1) * 100).ToString() + "% 체력 / 초";
-
-        pT5.text = gymItem5["가격"].ToString();
-        rT5.text = "+" + ((gymItem5["효과"] - 1) * 100).ToString() + "% 체력 / 터치\n" + "+" + ((gymItem5["효과"] - 1) * 100).ToString() + "% 체력 / 초";
-
     }
-    void Update()
+    public void buyButtonOnClick(Text gymMainText)
     {
-
-
-    }
-    public void gB1OnClick()
-    {
-        if (gymItem1["레벨"] < 1)
+        string name = gymMainText.text.Split(new string[] { "\n" }, StringSplitOptions.None)[0];
+        int index = int.Parse(gymMainText.name.ToString()[gymMainText.name.ToString().Length - 1].ToString()) - 1;
+        if (gymItemList[name].getLevel() < 1)
         {
-            if (buyProcess("헬스장_1"))
+            if (buyProcess(name))
             {
-                mT1.text = "야외 헬스장\n구매 완료";
+                mainTextList[index].text = name + "\n구매 완료";
             }
         }
     }
-    public void gB2OnClick()
-    {
-        if (gymItem2["레벨"] < 1)
-        {
-            if (buyProcess("헬스장_2"))
-            {
-                mT2.text = "동네 헬스장\n구매 완료";
-            }
-        }
-    }
-    public void gB3OnClick()
-    {
-        if (gymItem3["레벨"] < 1)
-        {
-            if (buyProcess("헬스장_3"))
-            {
-                mT3.text = "시내 헬스장\n구매 완료";
-            }
-        }
-    }
-    public void gB4OnClick()
-    {
-        if (gymItem4["레벨"] < 1)
-        {
-            if (buyProcess("헬스장_4"))
-            {
-                mT4.text = "단체 PT\n구매 완료";
-            }
-        }
-    }
-    public void gB5OnClick()
-    {
-        if (gymItem5["레벨"] < 1)
-        {
-            if (buyProcess("헬스장_5"))
-            {
-                mT5.text = "개인 PT\n구매 완료";
-            }
-        }
-    }
-
     bool buyProcess(string name)
     {
-        if (dataController.getHealth("health") > gymItemList[name]["가격"])
+        if (dataController.getHealth("health") > gymItemList[name].price)
         {
-            dataController.decHealth("health", Convert.ToInt32(gymItemList[name]["가격"]));
-            dataController.mulHealth(gymItemList[name]["효과"]);
+            dataController.decHealth("health", Convert.ToInt32(gymItemList[name].price));
+            dataController.mulHealth(gymItemList[name].effect);
 
-            gymItemList[name]["레벨"] += 1;
+            gymItemList[name].setLevel(gymItemList[name].getLevel() + 1);
 
             string saveLevel = name + "레벨";
             string savePrice = name + "가격";
             string saveEffect = name + "효과";
 
-            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(gymItemList[name]["레벨"]));
-            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(gymItemList[name]["가격"]));
-            PlayerPrefs.SetFloat(saveEffect, gymItemList[name]["효과"]);
+            PlayerPrefs.SetInt(savePrice, Convert.ToInt32(gymItemList[name].price));
+            PlayerPrefs.SetFloat(saveEffect, gymItemList[name].effect);
+            PlayerPrefs.SetInt(saveLevel, Convert.ToInt32(gymItemList[name].getLevel()));
             return true;
         }
         return false;
+    }
+    public void hey(int a, int b)
+    {
+        Debug.Log("hey");
     }
 }
