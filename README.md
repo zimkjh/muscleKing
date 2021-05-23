@@ -17,6 +17,6 @@ Eat protein and buy good equipments.
 
 
 
-![_Screenshot 1](./_Screenshot 2.jpg)
+![sc1](./sc1.jpg)
 
-![_Screenshot 2](./_Screenshot 1.jpg)
+![sc2](./sc2.jpg)
